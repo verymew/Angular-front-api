@@ -21,5 +21,4 @@ export class TesteComponent {
       console.log(data.name);
     })
   }
-
 }
