@@ -1,0 +1,5 @@
+<form [formGroup]="formulario" (ngSubmit)="getCsrf()">
+    <label for="conteudo">First Name: </label>
+    <input id="first-name" type="text" formControlName="postage">
+    <button type="submit" [disabled]="!formulario.valid">Submit</button>
+</form>

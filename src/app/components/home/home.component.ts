@@ -15,7 +15,6 @@ export class HomeComponent {
 
   constructor(){
     this.nome = "";
-    this.retornarAlgo();
   }
 
   retornarAlgo(): void{
