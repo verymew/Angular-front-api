@@ -26,24 +26,29 @@ export class PostagemComponent {
     this.postagem = '';
   }
 
+  ngOnInit(): void {
+    this.getCsrf();
+  }
+
   getCsrf(): void{
-    this.http.get<any>('/api/csrf').subscribe(data => {
-      console.log(data)
+    const resposta = this.http.get<any>('/api/csrf').subscribe(data => {
+      this.tokencsrf = data.token;
     })
   };
 
   enviarPost(): void{
     this.getCsrf();
     if(this.formulario.value.postage){
-      this.postagem = this.formulario.value.postage;
-    }
-    if(this.postagem){
-      this.http.post('/api/oi', this.postagem, {
+      const body = {
+        "message": this.formulario.value.postage
+      }
+      //Adicionando headers:
+      this.http.post<string>('/api/oi', body, {
         headers: {
+          'Content-Type': 'application/json',
           "X-CSRF-TOKEN": this.tokencsrf
         }
-      })
-    }
+      }).subscribe(a => console.log(a))
+    };
   };
-
 }
