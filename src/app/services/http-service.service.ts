@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 
 @Injectable({
@@ -6,14 +6,15 @@ import { Injectable, inject } from '@angular/core';
 })
 export class HttpService {
   private http = inject(HttpClient)
-  csrfToken:string;
+  csrfToken:any;
 
   constructor(){
     this.csrfToken = "";
   }
 
   getCsrf(): void{
-    this.http.get<any>("/api/csrf").subscribe(data => this.csrfToken = data.token);
+    this.http.get<any>("http://localhost:8080/api/csrf").subscribe(data => this.csrfToken = data.token);
+    console.log(this.csrfToken);
   }
 
   get(url:string): any{
@@ -21,6 +22,7 @@ export class HttpService {
   }
 
   post(url:string, data:any): any{
-    return this.http.post(url, + data, {withCredentials: true});
+    this.getCsrf();
+    return this.http.post("http://localhost:8080" + url, + data, {withCredentials: true, headers: new HttpHeaders({"X-CSRF-TOKEN": this.csrfToken})}).subscribe(data => console.log(data));
   }
 }

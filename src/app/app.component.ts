@@ -12,10 +12,5 @@ import { HttpService } from './services/http-service.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  private http = inject(HttpService)
   title = 'front';
-
-  ngOnInit(): void{
-    this.http.getCsrf();
-  }
 }
