@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { HttpService } from './services/http-service.service';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +12,10 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  private http = inject(HttpService)
   title = 'front';
+
+  ngOnInit(): void{
+    this.http.getCsrf();
+  }
 }
