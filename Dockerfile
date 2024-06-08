@@ -1,6 +1,8 @@
-FROM node:22
+FROM node:22 as builder
 WORKDIR /app
 COPY . .
 RUN npm install
 RUN npm install @angular/cli -g
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+
+FROM nginx:alpine
+COPY --from=builder /app

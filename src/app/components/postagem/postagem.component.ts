@@ -27,8 +27,8 @@ export class PostagemComponent {
   }
 
   getCsrf(): void{
-    this.http.get<any>('localhost:8080/api/csrf').subscribe(data => {
-      console.log(this.tokencsrf)
+    this.http.get<any>('/api/csrf').subscribe(data => {
+      console.log(data)
     })
   };
 
@@ -38,7 +38,7 @@ export class PostagemComponent {
       this.postagem = this.formulario.value.postage;
     }
     if(this.postagem){
-      this.http.post('localhost:8080/api/oi', this.postagem, {
+      this.http.post('/api/oi', this.postagem, {
         headers: {
           "X-CSRF-TOKEN": this.tokencsrf
         }
