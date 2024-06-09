@@ -23,6 +23,6 @@ export class HttpService {
 
   post(url:string, data:any): any{
     this.getCsrf();
-    return this.http.post("http://localhost:8080" + url, + data, {withCredentials: true, headers: new HttpHeaders({"X-CSRF-TOKEN": this.csrfToken})}).subscribe(data => console.log(data));
+    return this.http.post("http://localhost:8080" + url, + data, {headers: new HttpHeaders({"X-CSRF-TOKEN": this.csrfToken})}).subscribe(data => console.log(data));
   }
 }
