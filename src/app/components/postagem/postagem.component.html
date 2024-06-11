@@ -1,5 +1,14 @@
-<form [formGroup]="formulario" (ngSubmit)="enviarPost()">
-    <label for="postage">First Name: </label>
-    <input id="postage" type="text" formControlName="postage">
-    <button type="submit" [disabled]="!formulario.valid">Submit</button>
-</form>
+<style>
+    .formu{
+        width: 100%;
+        text-align: center;
+        color: white;
+    }
+</style>
+<div class="formu">
+    <form [formGroup]="formulario" (ngSubmit)="enviarPost()">
+        <input id="postage" style="margin: 10px 0;" type="text" formControlName="postage">
+        <br>
+        <button type="submit" [disabled]="!formulario.valid">Submit</button>
+    </form>   
+</div>

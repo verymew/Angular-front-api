@@ -1,0 +1,54 @@
+<style>
+.formu{
+  width: 100%;
+  text-align: center;
+  height: 500px;
+  align-content: center;
+}
+
+/*input*/  
+.input-group{
+  height: 50px;
+}
+.input {
+  min-height: 35px;
+  padding: 0 1rem;
+  color: #fff;
+  font-size: 15px;
+  border: 1px solid #575757;
+  border-radius: 6px 0 0 6px;
+  background-color: transparent;
+}
+
+.button--submit {
+  min-height: 37px;
+  padding: .5em 1em;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #acacac;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
+}
+
+.button--submit:hover {
+  background-color: #696969;
+}
+
+.input:focus, .input:focus-visible {
+  border-color: #3898EC;
+  outline: none;
+}
+
+
+</style>
+
+<div class="formu">
+  <form [formGroup]="formulario">
+    <div class="input-group">
+      <input type="email" class="input" id="Email" name="Email" placeholder="Ex. Porto Alegre, RS" autocomplete="off">
+      <input class="button--submit" value="Procurar" type="submit">
+  </div>
+  </form>   
+</div>
